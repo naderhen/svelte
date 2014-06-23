@@ -1,1 +1,1 @@
-API_URL = "http://b3ec157.ngrok.com"
+API_URL = "http://ancient-tor-8973.herokuapp.com/"

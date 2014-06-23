@@ -4,7 +4,7 @@
  */
 
 .finish-button {
-	background-color: $spot-green;
+	background-color: $accent-color;
 	color: $white;
 }
 
@@ -23,7 +23,7 @@
     .rep-circle { background-color: none; }
 
     .rep-circle-accomplished {
-    	background-color: $spot-green;
+    	background-color: $accent-color;
 
     	.rep-label { color: $black; }
     }

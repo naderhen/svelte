@@ -41,7 +41,7 @@ navigation-bar {
   color: white; }
 
 navigation-bar title {
-  color: #7cc110;
+  color: #f39c12;
   font-family: "Avenir";
   font-size: 17pt;
   font-weight: bold; }
@@ -125,7 +125,7 @@ button,
 .button {
   border-radius: 3pt;
   color: white;
-  background-color: #7cc110;
+  background-color: #f39c12;
   font-family: "Avenir";
   font-size: 14pt;
   text-transform: uppercase;
@@ -133,7 +133,7 @@ button,
 
 button:highlighted,
 .button:highlighted {
-  background-color: #3f6308;
+  background-color: #976008;
   border-radius: 3pt; }
 
 button.large,
@@ -1391,7 +1391,7 @@ table-view-headerfooter-view text-label {
  * --------------------------------
  */
 .finish-button {
-  background-color: #7cc110;
+  background-color: #f39c12;
   color: white; }
 
 .new_workout_cell {
@@ -1406,7 +1406,7 @@ table-view-headerfooter-view text-label {
   .new_workout_cell .rep-circle {
     background-color: none; }
   .new_workout_cell .rep-circle-accomplished {
-    background-color: #7cc110; }
+    background-color: #f39c12; }
     .new_workout_cell .rep-circle-accomplished .rep-label {
       color: black; }
   .new_workout_cell .weight-label {

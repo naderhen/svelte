@@ -21,7 +21,7 @@ $green:             #00D705;
 $yellow:            #D7D400;
 $red:               #D70000;
 
-$spot-green:		#7CC110;
+$accent-color:		#f39c12;
 
 
 /* Theme */
@@ -122,8 +122,8 @@ $segmented-control-text-color-selected: $white;
 
 /* Buttons */
 
-$button-bg-color:                       $spot-green;
-$button-bg-color-highlighted:           darken($spot-green, 20%);
+$button-bg-color:                       $accent-color;
+$button-bg-color-highlighted:           darken($accent-color, 20%);
 $button-text-color:                     $white;
 $button-text-color-highlighted:         darken($button-text-color, 50%);
 $button-text-font:                      $font-family-base;
