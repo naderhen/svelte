@@ -1,9 +1,9 @@
-module WorksetCollectionCellStylesheet
+module RoutinesCellStylesheet
   def cell_size
-    {w: 50, h: 75}
+    {w: rmq.device.width - 20, h: 45}
   end
 
-  def workset_collection_cell(st)
+  def routines_cell(st)
     st.frame = cell_size
     # st.background_color = color.random
 

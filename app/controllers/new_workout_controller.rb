@@ -1,4 +1,5 @@
 class NewWorkoutController < UIViewController
+  attr_accessor :routine
   # In app_delegate.rb or wherever you use this controller, just call .new like so:
   #   @window.rootViewController = NewWorkoutController.new
   #
@@ -20,18 +21,6 @@ class NewWorkoutController < UIViewController
 
     @workout = {
       setGroups: []
-    }
-
-    @routine = {
-      id: 1234,
-      name: "Workout A",
-      steps: [
-        {id: 1, start_weight: 100, weight_increment: 20, set_reps: [12, 10, 8, 6], exercise: {id: 12, name: "Front Squat"}},
-        {id: 2, start_weight: 100, weight_increment: 20, set_reps: [12, 10, 8, 6], exercise: {id: 13, name: "Overhead Press"}},
-        {id: 3, start_weight: 100, weight_increment: 20, set_reps: [12, 10, 8, 6], exercise: {id: 14, name: "Dips"}},
-        {id: 4, start_weight: 100, weight_increment: 20, set_reps: [12, 10, 8, 6], exercise: {id: 15, name: "Military Press"}},
-        {id: 5, start_weight: 100, weight_increment: 20, set_reps: [12, 10, 8, 6], exercise: {id: 16, name: "Bench Press"}},
-      ]
     }
 
     @routine[:steps].each do |step|
@@ -61,7 +50,10 @@ class NewWorkoutController < UIViewController
       rmq(cv).apply_style :collection_view
     end
 
-
+    @finish_button = rmq(self.view).append(UIButton, :finish_button).get
+    @finish_button.frame = [[10, self.view.frame.size.height - 114], [self.view.frame.size.width - 20, 35]]
+    @finish_button.setTitle "Finish Workout", forState: UIControlStateNormal
+    @finish_button.styleClass = 'finish-button'
   end
 
   # Remove if you are only supporting portrait
@@ -85,7 +77,7 @@ class NewWorkoutController < UIViewController
   def collectionView(view, cellForItemAtIndexPath: index_path)
     view.dequeueReusableCellWithReuseIdentifier(NEW_WORKOUT_CELL_ID, forIndexPath: index_path).tap do |cell|
       rmq.build(cell) unless cell.reused
-
+      cell.custom_delegate = self
       # Update cell's data here
       cell.update(@workout[:setGroups][index_path.row])
     end
@@ -94,6 +86,13 @@ class NewWorkoutController < UIViewController
   def collectionView(view, didSelectItemAtIndexPath: index_path)
     cell = view.cellForItemAtIndexPath(index_path)
     puts "Selected at section: #{index_path.section}, row: #{index_path.row}"
+  end
+
+  def edit_work_set(workset)
+    edit_controller = EditWorkSetController.new
+    edit_controller.workset = workset
+
+    self.presentViewController(edit_controller, animated:true, completion:nil)
   end
 
 end

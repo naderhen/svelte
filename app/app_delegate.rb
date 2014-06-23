@@ -6,7 +6,7 @@ class AppDelegate
 
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
 
-    main_controller = NewWorkoutController.new
+    main_controller = RoutinesController.new
     @window.rootViewController = UINavigationController.alloc.initWithRootViewController(main_controller)
 
     @window.styleMode = PXStylingNormal

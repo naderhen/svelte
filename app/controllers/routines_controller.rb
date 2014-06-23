@@ -1,35 +1,37 @@
-class WorksetCollectionController < UICollectionViewController
-  attr_accessor :setGroup
-  attr_accessor :custom_delegate
-
+class RoutinesController < UICollectionViewController
   # In app_delegate.rb or wherever you use this controller, just call .new like so:
-  #   @window.rootViewController = WorksetCollectionController.new
+  #   @window.rootViewController = RoutinesController.new
   #
   # Or if you're adding using it in a navigation controller, do this
-  #  main_controller = WorksetCollectionController.new
+  #  main_controller = RoutinesController.new
   #  @window.rootViewController = UINavigationController.alloc.initWithRootViewController(main_controller)
 
-  WORKSET_COLLECTION_CELL_ID = "WorksetCollectionCell"
+  ROUTINES_CELL_ID = "RoutinesCell"
 
   def self.new(args = {})
     # Set layout
     layout = UICollectionViewFlowLayout.alloc.init
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal
     self.alloc.initWithCollectionViewLayout(layout)
   end
 
   def viewDidLoad
     super
-    rmq.stylesheet = WorksetCollectionControllerStylesheet
+    self.title = "Select a Routine"
+
+    @routines = []
+
+    rmq.stylesheet = RoutinesControllerStylesheet
 
     collectionView.tap do |cv|
-      cv.registerClass(WorksetCollectionCell, forCellWithReuseIdentifier: WORKSET_COLLECTION_CELL_ID)
+      cv.registerClass(RoutinesCell, forCellWithReuseIdentifier: ROUTINES_CELL_ID)
       cv.delegate = self
       cv.dataSource = self
       cv.allowsSelection = true
       cv.allowsMultipleSelection = false
       rmq(cv).apply_style :collection_view
     end
+
+    fetch_routines
   end
 
   # Remove if you are only supporting portrait
@@ -47,30 +49,35 @@ class WorksetCollectionController < UICollectionViewController
   end
 
   def collectionView(view, numberOfItemsInSection: section)
-    @setGroup[:worksets].size || 0
+    @routines.size
   end
 
   def collectionView(view, cellForItemAtIndexPath: index_path)
-    view.dequeueReusableCellWithReuseIdentifier(WORKSET_COLLECTION_CELL_ID, forIndexPath: index_path).tap do |cell|
+    view.dequeueReusableCellWithReuseIdentifier(ROUTINES_CELL_ID, forIndexPath: index_path).tap do |cell|
       rmq.build(cell) unless cell.reused
-      cell.custom_delegate = @custom_delegate
+
       # Update cell's data here
-      cell.update(@setGroup[:worksets][index_path.row])
+      cell.update(@routines[index_path.row])
     end
   end
 
   def collectionView(view, didSelectItemAtIndexPath: index_path)
     cell = view.cellForItemAtIndexPath(index_path)
-    workset = @setGroup[:worksets][index_path.row]
+    routine = @routines[index_path.row]
     puts "Selected at section: #{index_path.section}, row: #{index_path.row}"
 
-    if workset[:accomplished_reps] == 0
-      workset[:accomplished_reps] = workset[:prescribed_reps]
-    else
-      workset[:accomplished_reps] = workset[:accomplished_reps] - 1
-    end
+    workout_controller = NewWorkoutController.new
+    workout_controller.routine = routine
+    self.navigationController.pushViewController(workout_controller, animated: true)
+  end
 
-    cell.update(workset)
+  def fetch_routines
+    AFMotion::JSON.get("http://b3ec157.ngrok.com/routines.json") do |result|
+      if result.success?
+        @routines = result.object
+        collectionView.reloadData
+      end
+    end
   end
 
 end

@@ -1,12 +1,11 @@
 class NewWorkoutCell < UICollectionViewCell
   attr_reader :reused
+  attr_accessor :custom_delegate
 
   def rmq_build
     rmq(self).apply_style :new_workout_cell
 
     q = rmq(self.contentView)
-    # Add your subviews, init stuff here
-    # @foo = q.append(UILabel, :foo).get
 
     self.contentView.styleClass = 'new_workout_cell'
 
@@ -27,6 +26,7 @@ class NewWorkoutCell < UICollectionViewCell
 
     @workset_collection = WorksetCollectionController.new
     @workset_collection.setGroup = setGroup
+    @workset_collection.custom_delegate = @custom_delegate
     @workset_collection.view.styleClass = "workset_collection"
 
     rmq(self.contentView).append(@workset_collection.view)

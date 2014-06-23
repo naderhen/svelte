@@ -5,6 +5,8 @@ gem 'awesome_print_motion'
 gem 'motion-pixatefreestyle'
 gem 'bubble-wrap' 
 gem 'motion-kit'
+gem 'afmotion' 
+
 # If you use a cocoapod (find them here https://www.cocoacontrols.com)
 #gem 'motion-cocoapods' 
 
@@ -19,4 +21,3 @@ gem 'motion-kit'
 #gem 'cdq' 
 
 # If you need to access the network, use AFMotion; it uses AFNetworking
-#gem 'afmotion' 

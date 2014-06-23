@@ -8,20 +8,20 @@ class WorkSetCellLayout < MotionKit::Layout
       layer do
         border_width 3
         border_color rmq.color.white
-        corner_radius 20
+        corner_radius 25
       end
       constraints do
         top_left x: 0, y: -20
-        width 40
-        height 40
+        width 50
+        height 50
       end
 
       add UILabel, :rep_label do
         text_alignment UITextAlignmentCenter
         constraints do
           top_left x: 0, y: 0
-          width 40
-          height  40
+          width 50
+          height  50
         end
       end
     end
@@ -29,8 +29,8 @@ class WorkSetCellLayout < MotionKit::Layout
     add UILabel, :weight_label do
       text_alignment UITextAlignmentCenter
       constraints do
-        top_left x: 0, y: 30
-        width 40
+        top_left x: 0, y: 40
+        width 50
         height 25
       end
     end
