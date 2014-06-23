@@ -125,7 +125,7 @@ button,
 .button {
   border-radius: 3pt;
   color: white;
-  background-color: #0096d7;
+  background-color: #7cc110;
   font-family: "Avenir";
   font-size: 14pt;
   text-transform: uppercase;
@@ -133,7 +133,7 @@ button,
 
 button:highlighted,
 .button:highlighted {
-  background-color: #004f71;
+  background-color: #3f6308;
   border-radius: 3pt; }
 
 button.large,
