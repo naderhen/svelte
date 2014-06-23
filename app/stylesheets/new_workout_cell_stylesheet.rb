@@ -1,6 +1,6 @@
 module NewWorkoutCellStylesheet
   def cell_size
-    {w: rmq.device.width - 20, h: 96}
+    {w: rmq.device.width - 20, h: 145}
   end
 
   def new_workout_cell(st)

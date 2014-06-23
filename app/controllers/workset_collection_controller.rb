@@ -21,6 +21,8 @@ class WorksetCollectionController < UICollectionViewController
     super
     rmq.stylesheet = WorksetCollectionControllerStylesheet
 
+
+
     collectionView.tap do |cv|
       cv.registerClass(WorksetCollectionCell, forCellWithReuseIdentifier: WORKSET_COLLECTION_CELL_ID)
       cv.delegate = self
@@ -46,7 +48,7 @@ class WorksetCollectionController < UICollectionViewController
   end
 
   def collectionView(view, numberOfItemsInSection: section)
-    @worksets.size * 4 || 0
+    @worksets.size || 0
   end
 
   def collectionView(view, cellForItemAtIndexPath: index_path)
@@ -54,12 +56,22 @@ class WorksetCollectionController < UICollectionViewController
       rmq.build(cell) unless cell.reused
 
       # Update cell's data here
+      cell.update(@worksets[index_path.row])
     end
   end
 
   def collectionView(view, didSelectItemAtIndexPath: index_path)
     cell = view.cellForItemAtIndexPath(index_path)
+    workset = @worksets[index_path.row]
     puts "Selected at section: #{index_path.section}, row: #{index_path.row}"
+
+    if workset[:accomplished_reps] == 0
+      workset[:accomplished_reps] = workset[:prescribed_reps]
+    else
+      workset[:accomplished_reps] = workset[:accomplished_reps] - 1
+    end
+
+    cell.update(workset)
   end
 
 end

@@ -1393,3 +1393,12 @@ table-view-headerfooter-view text-label {
 .new_workout_cell {
   background-color: #FFF;
   border: 1px solid #CCC; }
+
+.new_workout_cell collection-view-cell {
+  background: none !important; }
+
+.rep-circle {
+  background-color: white; }
+
+.rep-circle-accomplished {
+  background-color: red; }

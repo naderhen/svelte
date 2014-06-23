@@ -26,9 +26,10 @@ class NewWorkoutCell < UICollectionViewCell
 
     @workset_collection = WorksetCollectionController.new
     @workset_collection.worksets = setGroup[:worksets]
+    @workset_collection.view.styleClass = "workset_collection"
 
     rmq(self.contentView).append(@workset_collection.view)
 
-    @workset_collection.view.frame = [[10, 45], [280, 45]]
+    @workset_collection.view.frame = [[10, 45], [280, 95]]
   end
 end
