@@ -55,6 +55,7 @@ class WorksetCollectionController < UICollectionViewController
       rmq.build(cell) unless cell.reused
       cell.custom_delegate = @custom_delegate
       # Update cell's data here
+      cell.layer.shouldRasterize = true
       cell.update(@setGroup[:worksets][index_path.row])
     end
   end

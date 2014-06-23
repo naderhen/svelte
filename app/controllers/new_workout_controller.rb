@@ -79,6 +79,7 @@ class NewWorkoutController < UIViewController
       rmq.build(cell) unless cell.reused
       cell.custom_delegate = self
       # Update cell's data here
+      cell.layer.shouldRasterize = true
       cell.update(@workout[:setGroups][index_path.row])
     end
   end
