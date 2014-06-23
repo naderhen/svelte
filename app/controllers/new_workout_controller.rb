@@ -28,7 +28,7 @@ class NewWorkoutController < UIViewController
       @workout[:setGroups].push(setGroup)
 
       step[:set_reps].each_with_index do |rep_num, idx|
-        new_weight = idx == 0 ? step[:start_weight] : setGroup[:worksets][idx - 1][:weight] + step[:weight_increment]
+        new_weight = idx == 0 ? step[:computed_weight] : setGroup[:worksets][idx - 1][:weight] + step[:weight_increment]
         setGroup[:worksets].push({exercise: step[:exercise], weight: new_weight, prescribed_reps: rep_num, accomplished_reps: 0})
       end
     end

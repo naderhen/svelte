@@ -72,7 +72,7 @@ class RoutinesController < UICollectionViewController
   end
 
   def fetch_routines
-    AFMotion::JSON.get("http://b3ec157.ngrok.com/routines.json") do |result|
+    AFMotion::JSON.get("#{API_URL}/routines.json") do |result|
       if result.success?
         @routines = result.object
         collectionView.reloadData
