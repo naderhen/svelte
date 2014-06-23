@@ -5,8 +5,9 @@ class WorkSetCellLayout < MotionKit::Layout
 
   def layout
     add UIView, :rep_circle do
-      background_color rmq.color.red
       layer do
+        border_width 3
+        border_color rmq.color.white
         corner_radius 20
       end
       constraints do

@@ -12,6 +12,7 @@ $blue-semidark:     #0070A3;
 $blue-dark:         #002C40;
 $white:             #FFFFFF;
 $white-smoke:       #F7F8FA;
+$black:				#000000;
 $gray:              #B0B1B4;
 $gray-superlight:   #F7F7F7;
 $gray-light:        #D8D9DC;
@@ -19,11 +20,12 @@ $gray-dark:         #53555A;
 $green:             #00D705;
 $yellow:            #D7D400;
 $red:               #D70000;
+$spot-green:		#7CC110;
 
 
 /* Theme */
 
-$app-bg:                                $white;
+$app-bg:                                $black;
 $icon-bg:                               transparent; /* Note: optimize by setting to your preferred color - either here, or in more specific contexts where you use icons */
 
 
@@ -40,7 +42,7 @@ $heading-font-family:                   $font-family-base;
 
 /* Navigation bar */
 
-$navbar-bg:                             $blue;
+$navbar-bg:                             $black;
 $navbar-text-color:                     $white;
 $navbar-text-font:                      $font-family-base;
 $navbar-title-text-weight:              bold;
@@ -72,7 +74,7 @@ $table-heading-bg-color:                $blue-semidark;
 
 /* Collection views */
 
-$collection-background-color:           $gray-superlight;
+$collection-background-color:           $black;
 $collection-cell-border-width:          0px;
 $collection-cell-border-color:          $gray;
 $collection-cell-border-radius:         5pt;

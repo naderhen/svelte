@@ -1,4 +1,4 @@
-class NewWorkoutController < UICollectionViewController
+class NewWorkoutController < UIViewController
   # In app_delegate.rb or wherever you use this controller, just call .new like so:
   #   @window.rootViewController = NewWorkoutController.new
   #
@@ -8,14 +8,15 @@ class NewWorkoutController < UICollectionViewController
 
   NEW_WORKOUT_CELL_ID = "NewWorkoutCell"
 
-  def self.new(args = {})
-    # Set layout
-    layout = UICollectionViewFlowLayout.alloc.init
-    self.alloc.initWithCollectionViewLayout(layout)
-  end
+  # def self.new(args = {})
+  #   # Set layout
+    
+  # end
 
   def viewDidLoad
     super
+
+    self.title = "New Workout"
 
     @workout = {
       setGroups: []
@@ -26,8 +27,10 @@ class NewWorkoutController < UICollectionViewController
       name: "Workout A",
       steps: [
         {id: 1, start_weight: 100, weight_increment: 20, set_reps: [12, 10, 8, 6], exercise: {id: 12, name: "Front Squat"}},
-        {id: 2, start_weight: 100, weight_increment: 20, set_reps: [12, 10, 8, 6], exercise: {id: 13, name: "Overhead Pres"}},
+        {id: 2, start_weight: 100, weight_increment: 20, set_reps: [12, 10, 8, 6], exercise: {id: 13, name: "Overhead Press"}},
         {id: 3, start_weight: 100, weight_increment: 20, set_reps: [12, 10, 8, 6], exercise: {id: 14, name: "Dips"}},
+        {id: 4, start_weight: 100, weight_increment: 20, set_reps: [12, 10, 8, 6], exercise: {id: 15, name: "Military Press"}},
+        {id: 5, start_weight: 100, weight_increment: 20, set_reps: [12, 10, 8, 6], exercise: {id: 16, name: "Bench Press"}},
       ]
     }
 
@@ -42,8 +45,14 @@ class NewWorkoutController < UICollectionViewController
     end
 
     rmq.stylesheet = NewWorkoutControllerStylesheet
+    rmq(self.view).apply_style :root_view
+    
+    layout = UICollectionViewFlowLayout.alloc.init
+    @collectionView = UICollectionView.alloc.initWithFrame([[0, 0], [self.view.frame.size.width, self.view.frame.size.height - 100]], collectionViewLayout:layout)
 
-    collectionView.tap do |cv|
+    rmq(self.view).append(@collectionView)
+
+    @collectionView.tap do |cv|
       cv.registerClass(NewWorkoutCell, forCellWithReuseIdentifier: NEW_WORKOUT_CELL_ID)
       cv.delegate = self
       cv.dataSource = self
@@ -51,6 +60,8 @@ class NewWorkoutController < UICollectionViewController
       cv.allowsMultipleSelection = false
       rmq(cv).apply_style :collection_view
     end
+
+
   end
 
   # Remove if you are only supporting portrait

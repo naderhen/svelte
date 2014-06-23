@@ -1,5 +1,5 @@
 class WorksetCollectionController < UICollectionViewController
-  attr_accessor :worksets
+  attr_accessor :setGroup
 
   # In app_delegate.rb or wherever you use this controller, just call .new like so:
   #   @window.rootViewController = WorksetCollectionController.new
@@ -20,8 +20,6 @@ class WorksetCollectionController < UICollectionViewController
   def viewDidLoad
     super
     rmq.stylesheet = WorksetCollectionControllerStylesheet
-
-
 
     collectionView.tap do |cv|
       cv.registerClass(WorksetCollectionCell, forCellWithReuseIdentifier: WORKSET_COLLECTION_CELL_ID)
@@ -48,7 +46,7 @@ class WorksetCollectionController < UICollectionViewController
   end
 
   def collectionView(view, numberOfItemsInSection: section)
-    @worksets.size || 0
+    @setGroup[:worksets].size || 0
   end
 
   def collectionView(view, cellForItemAtIndexPath: index_path)
@@ -56,13 +54,13 @@ class WorksetCollectionController < UICollectionViewController
       rmq.build(cell) unless cell.reused
 
       # Update cell's data here
-      cell.update(@worksets[index_path.row])
+      cell.update(@setGroup[:worksets][index_path.row])
     end
   end
 
   def collectionView(view, didSelectItemAtIndexPath: index_path)
     cell = view.cellForItemAtIndexPath(index_path)
-    workset = @worksets[index_path.row]
+    workset = @setGroup[:worksets][index_path.row]
     puts "Selected at section: #{index_path.section}, row: #{index_path.row}"
 
     if workset[:accomplished_reps] == 0

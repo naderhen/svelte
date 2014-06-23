@@ -23,9 +23,10 @@ class NewWorkoutCell < UICollectionViewCell
 
   def update(setGroup)
     @exercise_label.text = setGroup[:exercise][:name]
+    @exercise_label.styleClass = 'h5 exercise-label'
 
     @workset_collection = WorksetCollectionController.new
-    @workset_collection.worksets = setGroup[:worksets]
+    @workset_collection.setGroup = setGroup
     @workset_collection.view.styleClass = "workset_collection"
 
     rmq(self.contentView).append(@workset_collection.view)

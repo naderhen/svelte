@@ -11,7 +11,6 @@ class WorksetCollectionControllerStylesheet < ApplicationStylesheet
 
   def collection_view(st)
     st.view.contentInset = [@margin, @margin, @margin, @margin]
-    st.background_color = color.white
 
     st.view.collectionViewLayout.tap do |cl|
       cl.itemSize = [cell_size[:w], cell_size[:h]]

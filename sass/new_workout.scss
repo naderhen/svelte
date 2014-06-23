@@ -4,18 +4,24 @@
  */
 
 .new_workout_cell {
-    background-color: #FFF;
-    border: 1px solid #CCC;
-}
+	background-color: $black;
+    border-bottom: 1px solid $gray-superlight;
 
-.new_workout_cell collection-view-cell {
-	background: none !important;
-}
+    .exercise-label { color: $white; }
+    
+    collection-view-cell { background: none !important; }
 
-.rep-circle {
-	background-color: white;
-}
+    .rep-label {
+    	color: $white;
+    }
 
-.rep-circle-accomplished {
-	background-color: red;
+    .rep-circle { background-color: none; }
+
+    .rep-circle-accomplished {
+    	background-color: $spot-green;
+
+    	.rep-label { color: $black; }
+    }
+
+    .weight-label { color: $gray; }
 }
