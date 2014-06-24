@@ -54,6 +54,10 @@ class NewWorkoutController < UIViewController
     @finish_button.frame = [[10, self.view.frame.size.height - 114], [self.view.frame.size.width - 20, 35]]
     @finish_button.setTitle "Finish Workout", forState: UIControlStateNormal
     @finish_button.styleClass = 'finish-button'
+
+    rmq(@finish_button).on(:tap) do |sender, event|
+      ap @workout
+    end
   end
 
   # Remove if you are only supporting portrait
@@ -78,6 +82,7 @@ class NewWorkoutController < UIViewController
     view.dequeueReusableCellWithReuseIdentifier(NEW_WORKOUT_CELL_ID, forIndexPath: index_path).tap do |cell|
       rmq.build(cell) unless cell.reused
       cell.custom_delegate = self
+
       # Update cell's data here
       cell.layer.shouldRasterize = true
       cell.update(@workout[:setGroups][index_path.row])

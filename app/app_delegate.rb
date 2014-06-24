@@ -19,7 +19,8 @@ class AppDelegate
   end
 
   def setup_pixate_monitor
-    PixateFreestyle.styleSheetFromFilePath('/Users/nhendawi/Projects/svelte/resources/default.css', withOrigin:PXStylesheetOriginApplication)
+    PixateFreestyle.styleSheetFromFilePath('/Users/naderhen/svelte/svelte/resources/default.css', withOrigin:PXStylesheetOriginApplication)
+    # PixateFreestyle.styleSheetFromFilePath('/Users/nhendawi/Projects/svelte/resources/default.css', withOrigin:PXStylesheetOriginApplication)
     PixateFreestyle.currentApplicationStylesheet.monitorChanges = true
   end
 end

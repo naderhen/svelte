@@ -29,7 +29,7 @@ class WorkSetCellLayout < MotionKit::Layout
     add UILabel, :weight_label do
       text_alignment UITextAlignmentCenter
       constraints do
-        top_left x: 0, y: 40
+        top_left x: 0, y: 50
         width 50
         height 25
       end
