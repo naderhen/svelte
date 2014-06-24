@@ -8,7 +8,7 @@ class NewWorkoutCellLayout < MotionKit::Layout
     add UILabel, :exercise_label do
       constraints do
         top_left x: 10, y: 10
-        width 250
+        width 150
         height 25
       end
     end

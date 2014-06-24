@@ -12,13 +12,7 @@
 	background-color: $black;
     border-bottom: 1px solid $gray-superlight;
 
-    
     .edit-label { text-align: right; color: $white; }
-    
-    collection-view-cell { background: none !important; }
-
-    
-
     
 }
 
@@ -28,8 +22,6 @@
     color: $white;
     height: 50;
 }
-
-.rep-circle { background-color: none; }
 
 .rep-circle-accomplished {
     background-color: $accent-color;

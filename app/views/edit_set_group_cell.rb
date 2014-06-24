@@ -17,7 +17,7 @@ class EditSetGroupCell < UICollectionViewCell
     ws_view = rmq(self.contentView).append(WorkSetView).get
     ws_view.workset = workset
     ws_view.layout_views(true)
-    rmq(ws_view).frame = {l: 10, t: 10, w: 50, h: 85}
+    rmq(ws_view).frame = {l: (300 - 50) / 2, t: 10, w: 50, h: 85}
 
     rmq(ws_view).on(:swipe_up) do |sender, event|
       sender.increment_reps

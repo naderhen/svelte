@@ -1,6 +1,6 @@
 module EditSetGroupCellStylesheet
   def cell_size
-    {w: 96, h: 96}
+    {w: rmq.device.width - 20, h: 96}
   end
 
   def edit_set_group_cell(st)

@@ -9,12 +9,7 @@ class NewWorkoutCell < UICollectionViewCell
 
     self.contentView.styleClass = 'new_workout_cell'
 
-    @layout = NewWorkoutCellLayout.new
-    @layout.view.frame = self.contentView.frame
-    q.append(@layout.view, :new_workout_cell_layout_view)
-
-    @exercise_label = @layout.exercise_label
-    @exercise_label.styleClass = 'exercise-label'
+    @exercise_label = q.append(UILabel, :exercise_label).get
   end
 
   def prepareForReuse

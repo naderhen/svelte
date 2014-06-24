@@ -13,4 +13,9 @@ module NewWorkoutCellStylesheet
   def new_workout_cell_layout_view(st)
 
   end
+
+  def exercise_label(st)
+    st.frame = {l: 10, y: 10, w: 150, h: 25}
+    st.view.styleClass = 'p exercise-label'
+  end
 end
