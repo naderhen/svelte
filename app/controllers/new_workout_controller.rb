@@ -29,7 +29,7 @@ class NewWorkoutController < UIViewController
 
       step[:rep_scheme].each_with_index do |rep_num, idx|
         new_weight = step[:start_weight]
-        
+
         if idx != 0
           if step[:adjustment_direction] == "+"
             new_weight = setGroup[:worksets][idx - 1][:weight] + step[:weight_adjustment]
@@ -69,6 +69,12 @@ class NewWorkoutController < UIViewController
     end
   end
 
+  def viewWillAppear(animated)
+    if @editing
+      @collectionView.reloadData      
+    end
+  end
+
   # Remove if you are only supporting portrait
   def supportedInterfaceOrientations
     UIInterfaceOrientationMaskAll
@@ -103,11 +109,10 @@ class NewWorkoutController < UIViewController
     puts "Selected at section: #{index_path.section}, row: #{index_path.row}"
   end
 
-  def edit_work_set(workset)
-    edit_controller = EditWorkSetController.new
-    edit_controller.workset = workset
-
-    self.presentViewController(edit_controller, animated:true, completion:nil)
+  def edit_set_group(set_group)
+    edit_controller = EditSetGroupController.new
+    edit_controller.set_group = set_group
+    @editing = true
+    self.navigationController.pushViewController(edit_controller, animated:true)
   end
-
 end

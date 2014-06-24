@@ -12,22 +12,29 @@
 	background-color: $black;
     border-bottom: 1px solid $gray-superlight;
 
-    .exercise-label { color: $white; }
+    
+    .edit-label { text-align: right; color: $white; }
     
     collection-view-cell { background: none !important; }
 
-    .rep-label {
-    	color: $white;
-    }
+    
 
-    .rep-circle { background-color: none; }
-
-    .rep-circle-accomplished {
-    	background-color: $accent-color;
-
-    	.rep-label { color: $black; }
-    }
-
-    .weight-label { color: $gray; }
+    
 }
 
+.exercise-label { color: $white; }
+
+.rep-label {
+    color: $white;
+    height: 50;
+}
+
+.rep-circle { background-color: none; }
+
+.rep-circle-accomplished {
+    background-color: $accent-color;
+
+    .rep-label { color: $black; }
+}
+
+.weight-label { color: $gray; }

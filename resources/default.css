@@ -1397,20 +1397,29 @@ table-view-headerfooter-view text-label {
 .new_workout_cell {
   background-color: black;
   border-bottom: 1px solid #f7f7f7; }
-  .new_workout_cell .exercise-label {
+  .new_workout_cell .edit-label {
+    text-align: right;
     color: white; }
   .new_workout_cell collection-view-cell {
     background: none !important; }
-  .new_workout_cell .rep-label {
-    color: white; }
-  .new_workout_cell .rep-circle {
-    background-color: none; }
-  .new_workout_cell .rep-circle-accomplished {
-    background-color: #f39c12; }
-    .new_workout_cell .rep-circle-accomplished .rep-label {
-      color: black; }
-  .new_workout_cell .weight-label {
-    color: #b0b1b4; }
+
+.exercise-label {
+  color: white; }
+
+.rep-label {
+  color: white;
+  height: 50; }
+
+.rep-circle {
+  background-color: none; }
+
+.rep-circle-accomplished {
+  background-color: #f39c12; }
+  .rep-circle-accomplished .rep-label {
+    color: black; }
+
+.weight-label {
+  color: #b0b1b4; }
 
 .routine-cell .routine-label {
   color: white; }

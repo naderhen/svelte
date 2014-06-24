@@ -1,6 +1,6 @@
 class NewWorkoutCellLayout < MotionKit::Layout
   view :exercise_label
-  view :workset_collection_controller
+  view :edit_label
 
   def layout
     # frame x: 0, y: 0, width: '100%', height: '100%1'
@@ -8,7 +8,7 @@ class NewWorkoutCellLayout < MotionKit::Layout
     add UILabel, :exercise_label do
       constraints do
         top_left x: 10, y: 10
-        width 150
+        width 250
         height 25
       end
     end

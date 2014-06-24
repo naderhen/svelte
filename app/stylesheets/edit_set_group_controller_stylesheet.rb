@@ -1,6 +1,6 @@
-class NewWorkoutControllerStylesheet < ApplicationStylesheet
+class EditSetGroupControllerStylesheet < ApplicationStylesheet
 
-  include NewWorkoutCellStylesheet
+  include EditSetGroupCellStylesheet
   include WorkSetViewStylesheet
 
   def setup
@@ -10,13 +10,9 @@ class NewWorkoutControllerStylesheet < ApplicationStylesheet
     @margin = ipad? ? 12 : 8
   end
 
-  def root_view(st)
-    st.background_color = color.black
-  end
-
   def collection_view(st)
     st.view.contentInset = [@margin, @margin, @margin, @margin]
-    st.background_color = color.black
+    st.background_color = color.white
 
     st.view.collectionViewLayout.tap do |cl|
       cl.itemSize = [cell_size[:w], cell_size[:h]]
@@ -26,9 +22,5 @@ class NewWorkoutControllerStylesheet < ApplicationStylesheet
       cl.minimumLineSpacing = @margin
       #cl.sectionInset = [0,0,0,0]
     end
-  end
-
-  def finish_button(st)
-    text = "Finish Workout"
   end
 end
