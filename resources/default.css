@@ -116,6 +116,9 @@ tab-bar tab-bar-item:selected {
 .text-right {
   text-align: right; }
 
+.text-accent {
+  color: #f39c12; }
+
 /* Views and controls */
 /*
  * Buttons
