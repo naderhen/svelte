@@ -56,17 +56,6 @@ class NewWorkoutCell < UICollectionViewCell
         rep_label.text = workset[:prescribed_reps].to_s
         rep_circle.styleClass = 'rep-circle'
       end
-
-
     end
-
-    # @workset_collection = WorksetCollectionController.new
-    # @workset_collection.setGroup = setGroup
-    # @workset_collection.custom_delegate = @custom_delegate
-    # @workset_collection.view.styleClass = "workset_collection"
-
-    # rmq(self.contentView).append(@workset_collection.view)
-
-    # @workset_collection.view.frame = [[10, 45], [280, 95]]
   end
 end
